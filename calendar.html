@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JuggleBee!</title>
+<link rel="stylesheet" href="/static/css/demo.css" type="text/css" media="screen"/>
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=Lobster" rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#sendcmd").click(function(){
+			alert("Click!");
+			$.ajax({
+				type: "POST",
+				url: "/command",
+				data: {command: $("#calcmd").val()},
+				dataType: "json",
+				success: function(response){
+					console.log("Success: "+response)
+					response_string = ''
+					$(response["result"]).each(function(){
+						response_string+=(' '+this);
+					});
+					$("#result").text(response_string);
+				},
+				error: function(error){
+					console.log('Error: '+error);
+				}
+			});
+		});
+		$("#senddsc").click(function(){
+			alert("Click!");
+			$.ajax({
+				type: "POST",
+				url: "/user",
+				data: {description: $("#userdsc").val()},
+				dataType: "json",
+				success: function(response){
+					console.log('Success: '+response)
+				},
+				error: function(error){
+					console.log('Error: '+error);
+				}
+			});
+		});
+	});
+
+
+</script>
+</head>
+
+<body>
+
+	<h1 class="tagline">JuggleBee.com</h1>
+	<p> {{debug}} </p>
+	<p> {{events}} </p>
+	<!--<h2 class"thanks">{{thanks}}</h2>-->
+	<div class="social">
+	<a href="http://twitter.com/jugglebee_"><img src="/static/images/elegantmediaicons/PNG/twitter.png" alt="twitter"/></a>
+	<a href="http://www.facebook.com/pages/JuggleBee/239110322832723"><img src="/static/images/elegantmediaicons/PNG/facebook.png" alt="twitter"/></a>
+	</div>	
+<form class="calendar">
+	<iframe src="https://www.google.com/calendar/embed?src=pnnjghhm4gl4udqmlt6cb1v9i8%40group.calendar.google.com&ctz=Europe/Warsaw" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</form>
+<!--
+	<p class="web">
+
+		<input type="text" name="web" id="web" />
+
+		<label for="web">Website</label>
+
+	</p>
+
+
+
+	<p class="text">
+
+		<textarea name="text"></textarea>
+
+	</p>
+
+
+
+
+-->
+
+
+
+
+
+
+</body>
+
+</html>
+
+
+</body>
+</html>

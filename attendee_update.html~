@@ -1,0 +1,160 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+
+  <head> 
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
+    <title>DreamAdmin - Page</title> 
+
+    <style type="text/css"> 
+      @import url("css/style.css");
+      @import url('css/style_text.css');
+      @import url('css/c-orange.css'); /* COLOR FILE CAN CHANGE TO c-blue.ccs, c-grey.ccs, c-orange.ccs, c-purple.ccs or c-red.ccs */ 
+      @import url('css/datepicker.css');
+      @import url('css/form.css');
+      @import url('css/menu.css');
+      @import url('css/messages.css');
+      @import url('css/statics.css');
+      @import url('css/tabs.css');
+      @import url('css/wysiwyg.css');
+      @import url('css/wysiwyg.modal.css');
+      @import url('css/wysiwyg-editor.css');
+    </style> 
+
+    <script type="text/javascript" src="js/jquery-1.6.1.min.js"></script> 
+
+    <!--[if lte IE 8]>
+      <script type="text/javascript" src="js/excanvas.min.js"></script>
+    <![endif]--> 
+
+  </head> 
+
+  <body> 
+
+    <div class="wrapper"> 
+      <div class="container"> 
+
+        <!--[if !IE]> START TOP <![endif]-->  
+        <div class="top"> 
+          <div class="split"><h1>JuggleBee.com</h1></div> 
+          <div class="split"> 
+            <div class="logout"><img src="gfx/icon-logout.gif" align="left" alt="Logout" /> <a href="{{logout_url}}">Logout</a></div> 
+            <div><img src="gfx/icon-welcome.gif" align="left" alt="Welcome" /> Welcome {{username}}</div> 
+          </div> 
+        </div> 
+        <!--[if !IE]> END TOP <![endif]-->  
+
+        <!--[if !IE]> START MENU <![endif]-->  
+        <div class="menu"> 
+          <ul> 
+            <li class="current"><a href="index.html">Dashboard</a></li> 
+            <li class="break"></li> 
+            <li><a href="calendar.html">Calendar</a></li> 
+            <li class="break"></li>
+            <li><a href="course.html">Courses</a></li> 
+            <li class="break"></li> 
+            <li> 
+              <a href="attendee.html">Attendees</a> 
+              <ul> 
+                <li><a href="attendee_create.html">Create attendee</a></li> 
+              </ul> 
+            </li> 
+            <li class="break"></li> 
+          </ul> 
+        </div> 
+        <!--[if !IE]> END MENU <![endif]-->  
+
+        <!--[if !IE]> START HOLDER <![endif]--> 
+        <div class="holder"> 
+
+
+          <!--[if !IE]> START SYSTEM MESSAGES <![endif]--> 
+          <div class="box"> 
+            <div class="title"> 
+              <h2>Update Attendee - {{attendee.name}}</h2> 
+              <img src="gfx/title-hide.gif" class="toggle" alt="" /> 
+            </div> 
+            <div class="content forms"> 
+
+              {% if error %}
+              <div class="message red"> 
+                {{error}}
+                <img src="gfx/icon-close.gif" alt="Close this item" /> 
+              </div> 
+              {% endif %}
+
+              <form action="{{action_update}}" method="post"> 
+
+                <div class="row"> 
+                  <label>Name</label> 
+                  <input name="name" type="text" value="{{attendee.name}}" class="medium" /> 
+                </div>
+
+                <div class="row"> 
+                  <label>E-mail</label> 
+                  <input name="email" type="text" value="{{attendee.email}}" class="medium" /> 
+                </div> 
+
+                <div class="row"> 
+                  <label>Google Account</label>
+                  <input name="google_account" type="text" value="{{attendee.google_account}}" class="medium" /> 
+                </div> 
+
+                <div class="row"> 
+                  <label>Facebook ID</label>
+                  <input name="facebook_id" type="text" value="{{attendee.facebook_id}}" class="medium" /> 
+                </div> 
+
+                <div class="row"> 
+                  <label>Source:</label> 
+                  <select> 
+                    <option value="own">Own</option> 
+                    <option value="fb">Facebook</option> 
+                    <option value="gc">Google Calendar</option>
+                  </select> 
+                </div> 
+
+
+                <div class="row buttons"> 
+                  <button type="submit"><span>Update</span></button>  
+                </div> 
+              </form> 
+
+
+            </div> 
+          </div> 
+          <!--[if !IE]> END SYSTEM MESSAGES <![endif]-->  
+
+        </div> 
+
+        <!--[if !IE]> START FOOTER <![endif]--> 
+        <div class="footer"> 
+          <div class="split">&#169; Copyright <a href="JuggleBee.com">JuggleBee.com</a></div> 
+        </div> 
+        <!--[if !IE]> END FOOTER <![endif]--> 
+
+      </div> 
+    </div> 
+
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.pngFix.js"></script>
+    <script type="text/javascript" src="js/hoverIntent.js"></script>
+    <script type="text/javascript" src="js/superfish.js"></script>
+    <script type="text/javascript" src="js/supersubs.js"></script>
+    <script type="text/javascript" src="js/date.js"></script>
+    <script type="text/javascript" src="js/jquery.sparkbox-select.js"></script>
+    <script type="text/javascript" src="js/jquery.datepicker.js"></script>
+    <script type="text/javascript" src="js/jquery.filestyle.mini.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.js"></script>
+    <script type="text/javascript" src="js/jquery.graphtable-0.2.js"></script>
+    <script type="text/javascript" src="js/jquery.wysiwyg.js"></script>
+    <script type="text/javascript" src="js/plugins/wysiwyg.rmFormat.js"></script>
+    <script type="text/javascript" src="js/controls/wysiwyg.link.js"></script>
+    <script type="text/javascript" src="js/controls/wysiwyg.table.js"></script>
+    <script type="text/javascript" src="js/controls/wysiwyg.image.js"></script>
+    <script type="text/javascript" src="js/inline.js"></script> 
+
+  </body> 
+
+</html> 

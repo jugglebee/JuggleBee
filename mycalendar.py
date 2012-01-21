@@ -12,7 +12,7 @@ from xml.etree import ElementTree
 
 class Calendar:
 
-    def __init__(self, email='medicine.django', password='9NtyW8_a'):
+    def __init__(self, email='paskuuuda', password='jug4beejug4bee'):
         
         source = 'Test Python Client'
         self.client =  gdata.calendar.client.CalendarClient(source)

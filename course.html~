@@ -1,0 +1,148 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+
+  <head> 
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
+    <title>DreamAdmin - Page</title> 
+
+    <style type="text/css"> 
+      @import url("/static/css/style.css");
+      @import url('/static/css/style_text.css');
+      @import url('/static/css/c-grey.css'); /* COLOR FILE CAN CHANGE TO c-blue.ccs, c-grey.ccs, c-orange.ccs, c-purple.ccs or c-red.ccs */ 
+      @import url('/static/css/datepicker.css');
+      @import url('/static/css/form.css');
+      @import url('/static/css/menu.css');
+      @import url('/static/css/messages.css');
+      @import url('/static/css/statics.css');
+      @import url('/static/css/tabs.css');
+      @import url('/static/css/wysiwyg.css');
+      @import url('/static/css/wysiwyg.modal.css');
+      @import url('/static/css/wysiwyg-editor.css');
+    </style> 
+
+    <script type="text/javascript" src="js/jquery-1.6.1.min.js"></script> 
+
+    <!--[if lte IE 8]>
+      <script type="text/javascript" src="js/excanvas.min.js"></script>
+    <![endif]--> 
+
+  </head> 
+
+  <body> 
+
+    <div class="wrapper"> 
+	<div class="divik">
+		<!-- gorny pasek -->
+	</div>
+      <div class="container"> 
+
+        <!--[if !IE]> START TOP <![endif]-->  
+        <div class="top"> 
+          <div class="split"><h1>JuggleBee.com</h1></div> 
+          <div class="split"> 
+            <div class="logout"><img src="/static/gfx/icon-logout.gif" align="left" alt="Logout" /> <a href="{{logout_url}}">Logout</a></div> 
+            <div><img src="/static/gfx/icon-welcome.gif" align="left" alt="Welcome" /> Welcome {{username}}</div> 
+          </div> 
+        </div> 
+        <!--[if !IE]> END TOP <![endif]-->  
+
+        <!--[if !IE]> START MENU <![endif]-->  
+        <div class="menu"> 
+          <ul> 
+            <li class="current"><a href="index.html">Dashboard</a></li> 
+            <li class="break"></li> 
+            <li><a href="/calendar">Calendar</a></li> 
+            <li class="break"></li>
+            <li><a href="/courses">Courses</a></li> 
+            <li class="break"></li> 
+            <li> 
+              <a href="/atd">Attendees</a> 
+              <ul> 
+                <li><a href="/atdcreate">Create attendee</a></li> 
+              </ul> 
+            </li> 
+            <li class="break"></li> 
+          </ul> 
+        </div>  
+        <!--[if !IE]> END MENU <![endif]-->  
+
+        <!--[if !IE]> START HOLDER <![endif]--> 
+        <div class="holder"> 
+
+
+          <!--[if !IE]> START SYSTEM MESSAGES <![endif]--> 
+          <div class="box"> 
+            <div class="title"> 
+              <h2>Courses</h2> 
+              <img src="/static/gfx/title-hide.gif" class="toggle" alt="" /> 
+            </div> 
+            <div class="content pages"> 
+
+              <table> 
+                <thead> 
+                  <tr> 
+                    <td>&nbsp;</td> 
+                    <td>Title</td> 
+                    <td>Attendees</td>
+                    <td>Date</td>
+                    <td>Created At</td> 
+                    <td>Status</td> 
+                  </tr>	
+                </thead> 
+                <tbody> 
+                  {% for c in courses %}
+                  <tr class="grey"> 
+                    <td>{{c.id}}</td> 
+                    <td><a href="{{course.url}}">{{c.title}}</a></td> 
+                    <td>{% for p in c.participants %} {{p}} </br> {% endfor %}</td> 
+                    <td>{{c.datetime}}</td> 
+                    <td>{{c.created_at}}</td> 
+                    <td>{{c.status}}</td> 
+                  </tr> 
+                  {% endfor %}
+                </tbody> 
+              </table>
+
+            </div> 
+          </div> 
+          <!--[if !IE]> END SYSTEM MESSAGES <![endif]-->  
+
+        </div> 
+
+        <!--[if !IE]> START FOOTER <![endif]--> 
+        <div class="footer"> 
+           <!-- <div class="split">&#169; Copyright <a href="JuggleBee.com">JuggleBee.com</a></div> --> 
+        </div> 
+        <!--[if !IE]> END FOOTER <![endif]--> 
+
+	
+
+      </div> 
+    </div> 
+<div class="footer2">
+		sadsads
+	</div>
+
+    <script type="text/javascript" src="/static/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.pngFix.js"></script>
+    <script type="text/javascript" src="/static/js/hoverIntent.js"></script>
+    <script type="text/javascript" src="/static/js/superfish.js"></script>
+    <script type="text/javascript" src="/static/js/supersubs.js"></script>
+    <script type="text/javascript" src="/static/js/date.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.sparkbox-select.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.datepicker.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.filestyle.mini.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.flot.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.graphtable-0.2.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.wysiwyg.js"></script>
+    <script type="text/javascript" src="/static/js/plugins/wysiwyg.rmFormat.js"></script>
+    <script type="text/javascript" src="/static/js/controls/wysiwyg.link.js"></script>
+    <script type="text/javascript" src="/static/js/controls/wysiwyg.table.js"></script>
+    <script type="text/javascript" src="/static/js/controls/wysiwyg.image.js"></script>
+    <script type="text/javascript" src="/static/js/inline.js"></script> 
+
+  </body> 
+
+</html> 
