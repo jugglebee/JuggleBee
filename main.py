@@ -116,7 +116,7 @@ class UserHandler(webapp.RequestHandler):
                                 "WHERE ANCESTOR IS :1 "
                                 "ORDER BY date DESC LIMIT 10",
                                 user_key(user_type))
-        content = str([str(i.username+'-'+i.email) for i in user_list])
+        content = unicode([unicode(i.username+'-'+i.email) for i in user_list])
         self.response.out.write(content)
 
 def decode_signed_req(data):
