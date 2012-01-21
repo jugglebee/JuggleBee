@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Call me Cal!</title>
+<link rel="stylesheet" href="/static/css/demo.css" type="text/css" media="screen"/>
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=Lobster" rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#sendcmd").click(function(){
+			alert("Click!");
+			$.ajax({
+				type: "POST",
+				url: "/command",
+				data: {command: $("#calcmd").val()},
+				dataType: "json",
+				success: function(response){
+					console.log("Success: "+response)
+					response_string = ''
+					$(response["result"]).each(function(){
+						response_string+=(' '+this);
+					});
+					$("#result").text(response_string);
+				},
+				error: function(error){
+					console.log('Error: '+error);
+				}
+			});
+		});
+		$("#senddsc").click(function(){
+			alert("Click!");
+			$.ajax({
+				type: "POST",
+				url: "/user",
+				data: {description: $("#userdsc").val()},
+				dataType: "json",
+				success: function(response){
+					console.log('Success: '+response)
+				},
+				error: function(error){
+					console.log('Error: '+error);
+				}
+			});
+		});
+	});
+
+
+</script>
+</head>
+
+<body>
+
+	<h1 class="tagline">JuggleBee.com</h1>
+	<!--<h2 class"thanks">{{thanks}}</h2>-->
+	<div class="social">
+	<a href="http://twitter.com/jugglebee_"><img src="/static/images/elegantmediaicons/PNG/twitter.png" alt="twitter"/></a>
+	<a href=""><img src="/static/images/elegantmediaicons/PNG/facebook.png" alt="twitter"/></a>
+	</div>	
+<form class="form" method="post">
+
+
+
+	<p class="name">
+
+	<input type="text" name="username" id="name" value="{{username}}"/>
+
+		<label for="username">Name</label>
+
+	</p>
+
+
+
+	<p class="email">
+
+	<input type="text" name="email" id="email" value="{{email}}"/>
+
+		<label for="email">E-mail</label>
+
+	</p>
+
+	<p>
+	{% if thanks %}
+		Thank You for your subscription!
+	{% else %}
+		<input class="myButton" type="submit" value="Send" />
+	{% endif %}
+	</p>
+
+</form>
+<!--
+	<p class="web">
+
+		<input type="text" name="web" id="web" />
+
+		<label for="web">Website</label>
+
+	</p>
+
+
+
+	<p class="text">
+
+		<textarea name="text"></textarea>
+
+	</p>
+
+
+
+
+-->
+
+</form>
+
+
+
+
+
+</body>
+
+</html>
+
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Call me Cal!</title>
+<link rel="stylesheet" href="/static/css/style.css" type="text/css" media="screen"/>
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=Lobster" rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#sendcmd").click(function(){
+			alert("Click!");
+			$.ajax({
+				type: "POST",
+				url: "/command",
+				data: {command: $("#calcmd").val()},
+				dataType: "json",
+				success: function(response){
+					console.log("Success: "+response)
+					response_string = ''
+					$(response["result"]).each(function(){
+						response_string+=(' '+this);
+					});
+					$("#result").text(response_string);
+				},
+				error: function(error){
+					console.log('Error: '+error);
+				}
+			});
+		});
+		$("#senddsc").click(function(){
+			alert("Click!");
+			$.ajax({
+				type: "POST",
+				url: "/user",
+				data: {description: $("#userdsc").val()},
+				dataType: "json",
+				success: function(response){
+					console.log('Success: '+response)
+				},
+				error: function(error){
+					console.log('Error: '+error);
+				}
+			});
+		});
+	});
+
+
+</script>
+</head>
+
+<body>
+<div id="wrapper" class="clearfix"><!--start wrapper-->
+	<div id="header" class="clearfix"><!--start header-->
+		
+			<div class="nav"><!--start navigation-->
+				<ul>
+					<li class="title"><a href="/detail">Jedi You are, register You should.</a></li>
+					{% if token %}
+						<li><a href="/detail">Token, {{token}}, I see You have.</a></li>
+					{% endif %}	
+					{% if events %}
+						<li><a href="/detail">Events, {{events}}, Your Calendar throws..</a></li>
+					{% endif %}	
+					{% if graph %}
+						<li><a href="/detail">More, {{graph}}, about You I know.</a></li>
+					{% endif %}
+					{% if url %}
+					<li><a href="{{url}}">Url, {{url}}</a></li>
+					{% endif %}	
+					{% if has_creadentials %}
+					<li><a href="">Credentials, {{has_credentials}}</a></li>
+					{% endif %}	
+				</ul>
+				<!---	
+				<ul class="menu-side">
+					<li><a class="facebook" href="page.html"><img src="/static/images/elegantmediaicons/PNG/facebook_small.png" alt="Facebook"></a></li>
+					<li><a class="twitter" href="page.html"><img src="/static/images/elegantmediaicons/PNG/twitter_small.png" alt="Twitter"></a></li>
+					<li><a class="youtube" href="page.html"><img src="/static/images/elegantmediaicons/PNG/youtube_small.png" alt="YouTube"></a></li>
+				</ul>
+				--->
+			</div><!--end navigation-->
+        
+		<div class="intro-p">
+			{% if user %}
+				<input class="long" type="text" name="userdsc" value="Hello {{user}}... here update your description you can."/>
+				<div class="myButtonWhite" id="senddsc">update</div>
+			{% else %}
+				<a href="#" class="myButtonBlue">register</a> 
+				<div style="color: #ccc; margin-right: 50px; float:right;">or </div>		
+				<a href="{{login_url}}" class="myButtonRed">register</a> 
+			{% endif %}
+		</div>
+    
+</div><!--end header-->
+   
+    <div class="intro-2">
+		<iframe src="https://www.google.com/calendar/embed?src=grodniewicz%40gmail.com&ctz=Europe/Warsaw" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+	</div>
+
+    
+    <div class="one_third">
+		<h3>Decision yours is:</h3>
+		<p>command: result </p>
+	</div>
+    
+    
+    <div class="one_third">
+		<h3>So...</h3>
+		<form>
+		<input type="text" value="Calendar command goes here..." name="calcmd" id="calcmd" />
+		</form>
+		</br>
+		<div class="myButtonWhite" id="sendcmd">send</div>
+	</div>
+    
+    
+	<div class="one_third column-last">
+		<h3>Hmm...</h3>
+		<p id="result">yet nothing is here... command You should send!</p>
+	</div>
+    
+	<div id="footer"><!--start footer-->
+		<div class="footer-text">
+			<p>Copyright &copy;  2012<span></span></p></div>
+	</div><!--end footer-->
+        
+</div><!--end wrapper-->
+</body>
+</html>
